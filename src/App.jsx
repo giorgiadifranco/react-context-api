@@ -28,6 +28,8 @@ function App() {
           <Route path="/" element={<Home />}> Home</Route>
           <Route path="/posts" element={<Posts />}> Posts</Route>
           <Route path="/about" element={<About />}> Chi Siamo</Route>
+          <Route path='/:slug' element={<PostPage />} />
+          <Route path='/newpost' element={<AddNewPost />} />
         </Route>
 
 
@@ -36,7 +38,7 @@ function App() {
           
                  
         </Route>*/}
-        <Route path='/:slug' element={<PostPage />} />
+        
 
         <Route path='/newpost' element={<AddNewPost />} />
       </Routes>

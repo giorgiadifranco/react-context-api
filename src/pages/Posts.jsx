@@ -1,16 +1,17 @@
 import { useState } from 'react'
 import { useEffect } from 'react'
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
 
 export default function Posts(){
 
 
 
     const [postsData, setPostsData] = useState({})
+    const navigate = useNavigate(); {/* mi permette di indirizzare le pagine */}
 
-  /*function handleClick(e){
-
-    fetchData()
-  }*/
+ 
 
   function fetchData (url = 'http://localhost:3001/posts'){
 
@@ -27,31 +28,19 @@ export default function Posts(){
 
 
 
-  {/*function handleFormSubmit(e){
-    e.preventDefault()
-    console.log('Form sent', articles);
 
+   function handleClick(){
 
-    
-    setNewArticle({
-      title: '',
-    image: '',
-    content: '',
-    category: '',
-    tags: [],
-    published: false,
-    })
+    navigate ('/newpost');
 
-console.log(articles);
-
-
-  }*/}
+  }
 
     return(
 
         <>
+          
             <h1>Posts</h1>
-
+            <button onClick={handleClick}>Aggiungi un nuovo Post</button>
              <section className='recipes'>
                 <div className="container">
                 <div
@@ -61,11 +50,13 @@ console.log(articles);
                     postsData.data.map(post =>(
                     <div class="col" key={post.slug}>
                         <div className="card">
-                        <img src={`http://localhost:3001/images/${post.image}`} alt =''/>
-                        <h1>{post.title}</h1>
-                        <p>
-                            {post.content}
-                        </p>
+                          <Link to={`/${post.slug}`}>
+                            <img src={`http://localhost:3001/images/${post.image}`} alt =''/>
+                            <h1>{post.title}</h1>
+                            <p>
+                                {post.content}
+                            </p>
+                          </Link>
                         </div>
                     </div>
                     )): <p>No results yet</p>} 
