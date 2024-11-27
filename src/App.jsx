@@ -1,5 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
+import GlobalContext from './contexts/GlobalContext.jsx'
+
 import Home from './pages/Home.jsx'
 import Posts from './pages/Posts.jsx'
 import PostPage from './pages/PostPage.jsx'
@@ -20,6 +22,12 @@ function App() {
 
   return (
     <>
+
+      <GlobalContext.Provder value={{Posts}}>
+
+        
+
+      </GlobalContext.Provder>
 
       <BrowserRouter>
 
